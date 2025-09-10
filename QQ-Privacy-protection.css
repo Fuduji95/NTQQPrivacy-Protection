@@ -1,0 +1,54 @@
+/* ==UserStyle==
+@name           QQ-Privacy-protection
+@description    通过css样式实现三种防窥功能
+@preprocessor   transitio
+@version        0.0.1
+@homepageURL    https://github.com/Fuduji95/NTQQPrivacy-Protection/tree/main
+@author         Fuduji95
+@license     	gpl-3.0
+@var color pop-color "气泡颜色" "#c9c9c9ff"
+@var color font-color "字体颜色" "#bebebeff"
+@var float  font-filter "字体模糊 " [0.0 ,10]
+@var checkbox avatar-To-The-Left "消息靠左" [false, "off", ""]
+@var checkbox hover-Show "悬浮头像显示内容" [false, "off", ""]
+==/UserStyle== */
+.message-content__wrapper{
+    .mix-message__container,.reply-message__container,.msg-content-container{ 
+        background-color:var(--pop-color) ;
+        color:var(--font-color);
+        filter: blur(var(--font-filter)px);
+    }
+    .mix-message__container:hover,.reply-message__container:hover{ 
+       background-color:#fff;
+
+    }
+}
+
+var(--avatar-To-The-Left).message-container.message-container--align-right {
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-template-areas:
+        "checkbox avatar . nickname nickname nickname"
+        "checkbox avatar . content status ."
+        "checkbox avatar . tips . .";
+    grid-template-columns: auto var(--avatar_size_2) 8px auto calc(var(--avatar_size_2) + 36px) 1fr;
+    justify-content:start;
+    justify-items:start;
+    .user-name--selfReverse{
+        flex-direction: row;
+    }
+    .user-name{
+        padding:0;
+    }
+}
+var(--hover-Show).message-container.message-container--align-right {
+   .message-content__wrapper{
+        visibility: hidden;  
+        opacity: 0;          
+        display: block;     
+   }
+    .avatar-span:hover ~ .message-content__wrapper{
+        visibility: visible; 
+        opacity: 1;          
+   }
+}
