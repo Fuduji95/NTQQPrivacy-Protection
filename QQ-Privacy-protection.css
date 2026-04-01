@@ -7,6 +7,7 @@
 @author         Fuduji95
 @license     	gpl-3.0
 @var color pop-color "气泡颜色" "#c9c9c9ff"
+@var color pop-color-hover "气泡颜色悬浮颜色" "#c9c9c9ff"
 @var color font-color "字体颜色" "#bebebeff"
 @var float  font-filter "字体模糊 " [0.0 ,10]
 @var checkbox avatar-To-The-Left "消息靠左" [false, "off", ""]
@@ -19,7 +20,7 @@
         filter: blur(var(--font-filter)px);
     }
     .mix-message__container:hover,.reply-message__container:hover{ 
-       background-color:#fff;
+       background-color:var(--pop-color-hover);
 
     }
 }
